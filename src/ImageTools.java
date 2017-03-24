@@ -5,118 +5,190 @@ public class ImageTools {
 
     public static int HORIZONTAL_FLIP = 1, VERTICAL_FLIP = 2, DOUBLE_FLIP = 3;
 
-    /* Pre: Receives the name of a fine with an image
-	 * Post: 	loads the image and returns it.
-	 * null is returned if the image cannot be loaded */
+    /**
+     * Loads an image.
+     *
+     * @param fileName The name of a file with an image
+     * @return Returns the loaded image. null is returned if the image cannot be loaded.
+     */
     public static BufferedImage load(String fileName) {
         return null;
     }
 
-    /* Pre: Receives a buffered image
-	 * Post: 	creates and returns a copy of the received image
-	 * null is returned if the received image is null */
+    /**
+     * Copies and returns an image.
+     *
+     * @param img Receives a buffered image
+     * @return Returns a copy of the received image. null is returned if the received image is null.
+     */
     public static BufferedImage copy(BufferedImage img) {
         return null;
     }
 
-    /* Pre: Receives a buffered image
-	 * Post: 	creates and returns a copy of the received image with a color mode that allows transparency
-	 * null is returned if the received image is null */
+    /**
+     * Returns a new image with transparency enabled.
+     *
+     * @param img Receives a buffered image
+     * @return returns a copy of the received image with a color mode that allows transparency.
+     * null is returned if the received image is null.
+     */
     public static BufferedImage copyWithTransparency(BufferedImage img) {
         return null;
     }
 
-    /* Pre: Receives a buffered image
-	 * Post: 	returns true if the image has a transparent mode and false otherwise */
+    /**
+     * Checks if the provided image has transparency.
+     *
+     * @param img Receives a buffered image
+     * @return returns true if the image has a transparent mode and false otherwise.
+     */
     public static boolean hasTransparency(BufferedImage img) {
         return false;
     }
 
-    /* Pre: Receives a buffered image and two positive double scale values (percentages)
-	 * Post: 	creates and returns a scaled copy of the received image
-	 * null is returned if the received image is null or if non-positive scales are provided*/
+    /**
+     * Scales an image.
+     *
+     * @param img Receives a buffered image and two positive double scale values (percentages)
+     * @param horizontalScale Value to scale horizontal by.
+     * @param verticalScale Value to scale vertical by.
+     * @return creates and returns a scaled copy of the received image,
+     * null is returned if the received image is null or if non-positive scales are provided
+     */
     public static BufferedImage scale(BufferedImage img, double horizontalScale,
             double verticalScale) {
         return null;
     }
 
-    /* Pre: Receives a buffered image and two positive dimensions
-	 * Post: 	creates and returns a scaled copy of the received image
-	 * null is returned if the received image is null or if non-positive dimensions are provided*/
+    /**
+     * Scales an image.
+     *
+     * @param img Receives a buffered image
+     * @param newWidth New width to scale to.
+     * @param newHeight New height to scale to.
+     * @return creates and returns a scaled copy of the received image,
+     * null is returned if the received image is null or if non-positive dimensions are provided
+     */
     public static BufferedImage scale(BufferedImage img, int newWidth,
             int newHeight) {
         return null;
     }
 
-    /* Pre: Receives a buffered image and a double angle
-	 * Post: 	creates and returns a rotated copy of the received image
-	 * null is returned if the received image is null*/
+    /**
+     * Rotates an image.
+     *
+     * @param img Receives a buffered image
+     * @param angle The angle to rotate to.
+     * @return The rotated image. null is returned if the received image is null.
+     */
     public static BufferedImage rotate(BufferedImage img, double angle) {
         return null;
     }
 
-    /* Pre: Receives a buffered image and a type of flip (int)
-	 * Post: 	creates and returns a flipped copy of the received image
-	 * null is returned if the received image is null or if an invalid flipping value is provided*/
+    /**
+     * Flips an image.
+     *
+     * @param img Receives a buffered image
+     * @param type Type of flip (int)
+     * @return Creates and returns a flipped copy of the received image.
+     * null is returned if the received image is null or if an invalid flipping value is provided
+     */
     public static BufferedImage flip(BufferedImage img, int type) {
         return null;
     }
 
-    /* Pre: Receives a buffered image
-	 * Post: 	creates and returns a blured copy of the received image,
-	 *	the bluring is created by blending each cell with its 8 neighbors.
-	 * null is returned if the received image is null*/
+    /**
+     * Blurs an image.
+     *
+     * @param img Receives a buffered image
+     * @return creates and returns a blurred copy of the received image,
+     * the blurring is created by blending each cell with its 8 neighbors.
+     * Null is returned if the received image is null.
+     */
     public static BufferedImage blur(BufferedImage img) {
         return null;
     }
 
-    /* Pre: Receives a buffered image and two positive dimensions
-	 * Post: 	creates and returns a copy with inverted colors of the received image
-	 * null is returned if the received image is null */
+    /**
+     * Inverts an image's colors.
+     *
+     * @param img Receives a buffered image
+     * @return Image with inverted colors. null is returned if the received image is null.
+     */
     public static BufferedImage invertColor(BufferedImage img) {
         return null;
     }
 
-    /* Pre: Receives a buffered image and a double percentage
-	 * Post: creates and returns a copy of the received image with the given percentage in decimal form of the images remaining
-	 * non-fully transparent pixels changed to be completely transparent.
-	 * null is returned if the received image is null or if non-positive percentage is provided*/
+    /**
+     * Removes a certain percentage of an image's pixels.
+     *
+     * @param img Receives a buffered image
+     * @param percentToRemove Percent to remove of the image.
+     * @return creates and returns a copy of the received image with the given
+     * percentage in decimal form of the images remaining non-fully transparent
+     * pixels changed to be completely transparent. null is returned if the
+     * received image is null or if non-positive percentage is provided.
+     */
     public static BufferedImage removePixels(BufferedImage img, double percentToRemove) {
         return null;
     }
 
-    /* Pre: Receives a buffered image and a number of pixels to remove
-	 * Post: creates and returns a copy of the received image with the given number of the images remaining pixels removed
-	 * non-fully transparent pixels changed to be completely transparent.
-	 * null is returned if the received image is null or if non-positive number is provided
-	 * Note: is there are not enough pixels in the image it will remove as many as it can*/
+    /**
+     * Removes a certain amount of pixels from an image.
+     *
+     * @param img Receives a buffered image
+     * @param numToRemove number of pixels to remove
+     * @return creates and returns a copy of the received image with the given
+     * number of the images remaining pixels removed.
+     * Non-fully transparent pixels are changed to be completely transparent.
+     * null is returned if the received image is null or if non-positive number
+     * is provided. Note: is there are not enough pixels in the image it will
+     * remove as many as it can.
+     */
     public static BufferedImage removePixels(BufferedImage img, int numToRemove) {
         return null;
     }
 
-    /* Pre: Receives a buffered image and a double percentage to fade
-	 * Post: creates and returns a copy of the received image that has been faded the given percentage
-	 * fading is done by multiply the alpha value by (1-fade)
-	 * null is returned if the received image is null or if non-positive fade value is provided
-	 * Note: any fade greater than 1 will be reduced to 1*/
+    /**
+     * Fades an image.
+     *
+     * @param img Receives a buffered image
+     * @param fade Double percentage to fade
+     * @return Creates and returns a copy of the received image that has been
+     * faded the given percentage. Fading is done by multiply the alpha value by (1-fade)
+     * Null is returned if the received image is null or if non-positive fade value is provided
+     * Note: any fade greater than 1 will be reduced to 1
+     */
     public static BufferedImage fade(BufferedImage img, double fade) {
         return null;
     }
 
-
-    /* Pre: Receives a buffered image and a double percentage to lighten
-	 * Post: creates and returns a copy of the received image that has been lighten by the given percentage + 1
-	 * null is returned if the received image is null or if non-positive lightenFactor value is provided
-	 * Note: any color that valve that end up being larger than 255 will be changed to 255*/
+    /**
+     * Lightens an image.
+     *
+     * @param img Receives a buffered image
+     * @param lightenFactor double percentage to lighten
+     * @return creates and returns a copy of the received image that has been
+     * lightened by the given percentage + 1.
+     * Null is returned if the received image is null or if non-positive lighten.
+     * Factor value is provided.
+     * Note: any colors that end up being larger than 255 will be changed to 255.
+     */
     public static BufferedImage lighten(BufferedImage img, double lightenFactor) {
         return null;
     }
 
-
-    /* Pre: Receives a buffered image and a double percentage to darken
-	 * Post: creates and returns a copy of the received image that has been darkened by 1 minus the given percentage
-	 * null is returned if the received image is null or if non-positive darkenFactor value is provided or a darkenFactor above 1 is provided
-	 * Note: any color that valve that end up being larger than 255 will be changed to 255*/
+    /**
+     * Darkens an image.
+     *
+     * @param img Receives a buffered image
+     * @param darkenFactor double percentage to darken
+     * @return creates and returns a copy of the received image that has been
+     * darkened by 1 minus the given percentage.
+     * null is returned if the received image is null or if non-positive.
+     * Note: any colors that end up being larger than 255 will be
+     * changed to 255.
+     */
     public static BufferedImage darken(BufferedImage img, double darkenFactor) {
         return null;
     }
