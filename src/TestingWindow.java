@@ -1,8 +1,8 @@
 
 import java.awt.Color;
-import javax.swing.JFrame;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import javax.swing.JFrame;
 
 public class TestingWindow extends JFrame {
 
@@ -14,8 +14,8 @@ public class TestingWindow extends JFrame {
         // After each line is written run the program and check it verse the key image in your lab
         // Note: after doing the load method you will need to uncomment the 1st 2 lines
 
-        //original		= ImageTools.load("circle.png");
-        //images[0][0]	= original;
+        original = ImageTools.load("circle.png");
+        images[0][0] = original;
         //images[0][1]	= ImageTools.copy(original);
         //images[0][2]	= ImageTools.scale(original,.25,.25);
         //images[0][3]	= ImageTools.scale(original,10,10);
