@@ -124,7 +124,14 @@ public class ImageTools {
         if (img == null) {
             return null;
         }
-        return null;
+        angle = angle % 360;
+        AffineTransform affineTransform = new AffineTransform();
+        affineTransform.setToTranslation(0, 0);
+        affineTransform.rotate(Math.toRadians(angle), img.getWidth() / 2, img.getHeight() / 2);
+        BufferedImage rotated = new BufferedImage(img.getWidth(), img.getHeight(), img.getColorModel().getTransparency());
+        Graphics2D g = (Graphics2D) (rotated.getGraphics());
+        g.drawImage(img, affineTransform, null);
+        return rotated;
     }
 
     /**

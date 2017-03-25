@@ -20,8 +20,8 @@ public class TestingWindow extends JFrame {
         images[0][1] = ImageTools.copy(original);
         images[0][2] = ImageTools.scale(original, .25, .25);
         images[0][3] = ImageTools.scale(original, 10, 10);
-        //images[1][0]	= ImageTools.rotate(original,25);
-        //images[1][1]	= ImageTools.rotate(original,90);
+        images[1][0] = ImageTools.rotate(original, 25);
+        images[1][1] = ImageTools.rotate(original, 90);
         //images[1][2]	= ImageTools.removePixels(original,.25);
         //images[1][3]	= ImageTools.removePixels(original,100);
         //images[2][0]	= ImageTools.flip(original, ImageTools.HORIZONTAL_FLIP);
