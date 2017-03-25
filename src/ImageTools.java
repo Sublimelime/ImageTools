@@ -88,7 +88,6 @@ public class ImageTools {
 
         tempG.drawImage(img, xform, null);
         return temp;
-
     }
 
     /**
@@ -105,7 +104,13 @@ public class ImageTools {
         if (img == null) {
             return null;
         }
-        return null;
+        BufferedImage temp = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D tempG = temp.createGraphics();
+        AffineTransform xform = new AffineTransform();
+        double currentWidth = img.getWidth(), currentHeight = img.getHeight();
+        xform.setToScale(newWidth / currentWidth, newHeight / currentHeight);
+        tempG.drawImage(img, xform, null);
+        return temp;
     }
 
     /**
