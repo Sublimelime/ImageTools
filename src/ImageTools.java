@@ -1,5 +1,8 @@
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class ImageTools {
 
@@ -12,7 +15,11 @@ public class ImageTools {
      * @return Returns the loaded image. null is returned if the image cannot be loaded.
      */
     public static BufferedImage load(String fileName) {
-        return null;
+        try {
+            return ImageIO.read((new File(fileName)));
+        } catch (IOException e) {
+            return null;
+        }
     }
 
     /**

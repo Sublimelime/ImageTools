@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 
 public class TestingWindow extends JFrame {
 
@@ -31,21 +32,23 @@ public class TestingWindow extends JFrame {
         //images[3][1]	= ImageTools.lighten(original,.3);
         //images[3][2]	= ImageTools.darken(original,.4);
         //images[3][3]	= ImageTools.invertColor(original);;
-        setSize(400, 400);
-        setUndecorated(true);
+        setSize(500, 500);
+        setUndecorated(false);
         setVisible(true);
+        setResizable(false);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         repaint();
     }
 
     public void paint(Graphics g) {
         g.setColor(Color.GRAY);
-        g.fillRect(0, 0, 400, 400);
+        g.fillRect(0, 0, getWidth(), getHeight());
 
         for (int r = 0; r < images.length; r++) {
             for (int c = 0; c < images[0].length; c++) {
                 if (images[r][c] != null) {
-                    g.drawImage(images[r][c], c * 100, r * 100, null);
+                    g.drawImage(images[r][c], (c * 100), (r * 100), null);
                 }
             }
         }
