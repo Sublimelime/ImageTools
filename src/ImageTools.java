@@ -1,5 +1,5 @@
 
-import java.awt.image.BufferedImage;
+import java.awt.image.*;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -29,7 +29,9 @@ public class ImageTools {
      * @return Returns a copy of the received image. null is returned if the received image is null.
      */
     public static BufferedImage copy(BufferedImage img) {
-        return null;
+        ColorModel cm = img.getColorModel();
+        WritableRaster raster = img.copyData(null);
+        return new BufferedImage(cm, raster, cm.isAlphaPremultiplied(), null);
     }
 
     /**
