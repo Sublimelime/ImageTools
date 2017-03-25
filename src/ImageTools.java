@@ -30,6 +30,9 @@ public class ImageTools {
      * @return Returns a copy of the received image. null is returned if the received image is null.
      */
     public static BufferedImage copy(BufferedImage img) {
+        if (img == null) {
+            return null;
+        }
         ColorModel cm = img.getColorModel();
         WritableRaster raster = img.copyData(null);
         return new BufferedImage(cm, raster, cm.isAlphaPremultiplied(), null);
@@ -43,6 +46,9 @@ public class ImageTools {
      * null is returned if the received image is null.
      */
     public static BufferedImage copyWithTransparency(BufferedImage img) {
+        if (img == null) {
+            return null;
+        }
         BufferedImage temp = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
         Graphics tempG = temp.getGraphics();
         tempG.drawImage(img, 0, 0, null);
@@ -70,6 +76,9 @@ public class ImageTools {
      */
     public static BufferedImage scale(BufferedImage img, double horizontalScale,
             double verticalScale) {
+        if (img == null) {
+            return null;
+        }
         return null;
     }
 
@@ -84,6 +93,9 @@ public class ImageTools {
      */
     public static BufferedImage scale(BufferedImage img, int newWidth,
             int newHeight) {
+        if (img == null) {
+            return null;
+        }
         return null;
     }
 
@@ -95,6 +107,9 @@ public class ImageTools {
      * @return The rotated image. null is returned if the received image is null.
      */
     public static BufferedImage rotate(BufferedImage img, double angle) {
+        if (img == null) {
+            return null;
+        }
         return null;
     }
 
@@ -107,6 +122,9 @@ public class ImageTools {
      * null is returned if the received image is null or if an invalid flipping value is provided
      */
     public static BufferedImage flip(BufferedImage img, int type) {
+        if (img == null) {
+            return null;
+        }
         return null;
     }
 
@@ -119,6 +137,9 @@ public class ImageTools {
      * Null is returned if the received image is null.
      */
     public static BufferedImage blur(BufferedImage img) {
+        if (img == null) {
+            return null;
+        }
         return null;
     }
 
@@ -129,6 +150,9 @@ public class ImageTools {
      * @return Image with inverted colors. null is returned if the received image is null.
      */
     public static BufferedImage invertColor(BufferedImage img) {
+        if (img == null) {
+            return null;
+        }
         return null;
     }
 
@@ -143,6 +167,9 @@ public class ImageTools {
      * received image is null or if non-positive percentage is provided.
      */
     public static BufferedImage removePixels(BufferedImage img, double percentToRemove) {
+        if (img == null) {
+            return null;
+        }
         return null;
     }
 
@@ -159,6 +186,9 @@ public class ImageTools {
      * remove as many as it can.
      */
     public static BufferedImage removePixels(BufferedImage img, int numToRemove) {
+        if (img == null) {
+            return null;
+        }
         return null;
     }
 
@@ -173,6 +203,9 @@ public class ImageTools {
      * Note: any fade greater than 1 will be reduced to 1
      */
     public static BufferedImage fade(BufferedImage img, double fade) {
+        if (img == null) {
+            return null;
+        }
         return null;
     }
 
@@ -188,6 +221,9 @@ public class ImageTools {
      * Note: any colors that end up being larger than 255 will be changed to 255.
      */
     public static BufferedImage lighten(BufferedImage img, double lightenFactor) {
+        if (img == null) {
+            return null;
+        }
         return null;
     }
 
@@ -203,6 +239,9 @@ public class ImageTools {
      * changed to 255.
      */
     public static BufferedImage darken(BufferedImage img, double darkenFactor) {
+        if (img == null) {
+            return null;
+        }
         return null;
     }
 }
