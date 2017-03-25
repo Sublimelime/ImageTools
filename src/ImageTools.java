@@ -1,5 +1,7 @@
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.image.*;
 import java.io.File;
 import java.io.IOException;
@@ -79,7 +81,14 @@ public class ImageTools {
         if (img == null) {
             return null;
         }
-        return null;
+        BufferedImage temp = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D tempG = temp.createGraphics();
+        AffineTransform xform = new AffineTransform();
+        xform.setToScale(horizontalScale, verticalScale);
+
+        tempG.drawImage(img, xform, null);
+        return temp;
+
     }
 
     /**
