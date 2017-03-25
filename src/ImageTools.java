@@ -1,4 +1,5 @@
 
+import java.awt.Graphics;
 import java.awt.image.*;
 import java.io.File;
 import java.io.IOException;
@@ -42,7 +43,10 @@ public class ImageTools {
      * null is returned if the received image is null.
      */
     public static BufferedImage copyWithTransparency(BufferedImage img) {
-        return null;
+        BufferedImage temp = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics tempG = temp.getGraphics();
+        tempG.drawImage(img, 0, 0, null);
+        return temp;
     }
 
     /**
@@ -52,7 +56,7 @@ public class ImageTools {
      * @return returns true if the image has a transparent mode and false otherwise.
      */
     public static boolean hasTransparency(BufferedImage img) {
-        return false;
+        return img.getColorModel().hasAlpha();
     }
 
     /**
