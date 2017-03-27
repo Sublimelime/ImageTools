@@ -173,7 +173,35 @@ public class ImageTools {
         if (img == null) {
             return null;
         }
-        return null;
+        BufferedImage temp = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        temp.getGraphics().drawImage(img, 0, 0, null);
+        //go through every other pixel, get averages of all 8 surrounding
+        for (int y = 1; y < img.getHeight(); y += 3) {
+            for (int x = 1; x < img.getWidth(); x += 3) {
+                temp.setRGB(x, y, getAverageForLocation(img, x, y));
+            }
+        }
+
+        return temp;
+    }
+
+    /**
+     * Gets the average color of a pixel location.
+     *
+     * @param img The buffered image to operate on.
+     * @param x Starting x location
+     * @param y Starting y location
+     * @return Average color of all 8 surrounding pixels.
+     */
+    private static int getAverageForLocation(BufferedImage img, int x, int y) {
+        int total = 0;
+        for (int i = 0; i <= 1; i++) {
+            total += img.getRGB(i, 0); //left upper corner, right
+            total += img.getRGB(2, i); //right upper corner, down
+            total += img.getRGB(-i + 2, 2); //bottom right corner, left
+            total += img.getRGB(0, -i + 2); //bottom left, up
+        }
+        return total / 8;
     }
 
     /**

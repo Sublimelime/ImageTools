@@ -7,7 +7,7 @@ import javax.swing.WindowConstants;
 
 public class TestingWindow extends JFrame {
 
-    BufferedImage original;
+    final BufferedImage original;
     BufferedImage[][] images = new BufferedImage[4][4];
 
     public TestingWindow() {
@@ -27,7 +27,7 @@ public class TestingWindow extends JFrame {
         images[2][0] = ImageTools.flip(original, ImageTools.HORIZONTAL_FLIP);
         images[2][1] = ImageTools.flip(original, ImageTools.VERTICAL_FLIP);
         images[2][2] = ImageTools.flip(original, ImageTools.DOUBLE_FLIP);
-        //images[2][3]	= ImageTools.blur(original);
+        images[2][3] = ImageTools.blur(original);
         //images[3][0]	= ImageTools.fade(original,.30);
         //images[3][1]	= ImageTools.lighten(original,.3);
         //images[3][2]	= ImageTools.darken(original,.4);
