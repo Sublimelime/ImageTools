@@ -146,7 +146,19 @@ public class ImageTools {
         if (img == null) {
             return null;
         }
-        return null;
+        BufferedImage temp = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics tempG = temp.getGraphics();
+        if (type == HORIZONTAL_FLIP) {
+            tempG.drawImage(img, 0 + img.getWidth(), 0, -img.getWidth(), img.getHeight(), null);
+            return temp;
+        } else if (type == VERTICAL_FLIP) {
+            tempG.drawImage(img, 0, img.getHeight(), img.getWidth(), -img.getHeight(), null);
+            return temp;
+        } else if (type == DOUBLE_FLIP) {
+            return rotate(img, 180);
+        } else {
+            return null;
+        }
     }
 
     /**
