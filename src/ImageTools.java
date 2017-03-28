@@ -1,6 +1,5 @@
 
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.geom.AffineTransform;
 import java.awt.image.*;
 import java.io.File;
@@ -176,8 +175,8 @@ public class ImageTools {
         BufferedImage temp = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
         temp.getGraphics().drawImage(img, 0, 0, null);
         //go through every other pixel, get averages of all 8 surrounding
-        for (int y = 1; y < img.getHeight(); y += 3) {
-            for (int x = 1; x < img.getWidth(); x += 3) {
+        for (int y = 0; y < img.getHeight(); y++) {
+            for (int x = 0; x < img.getWidth(); x++) {
                 temp.setRGB(x, y, getAverageForLocation(img, x, y));
             }
         }
@@ -195,13 +194,26 @@ public class ImageTools {
      */
     private static int getAverageForLocation(BufferedImage img, int x, int y) {
         int total = 0;
-        for (int i = 0; i <= 1; i++) {
-            total += img.getRGB(i, 0); //left upper corner, right
-            total += img.getRGB(2, i); //right upper corner, down
-            total += img.getRGB(-i + 2, 2); //bottom right corner, left
-            total += img.getRGB(0, -i + 2); //bottom left, up
+        int count = 0;
+        int red = 0, blue = 0, green = 0;
+        Color c = new Color(0, 0, 0);
+
+        for (int y2 = y - 1; y2 <= y + 1; y2++) {
+            for (int x2 = x - 1; x2 <= x + 1; x2++) {
+                if (y2 < 0 || y2 >= img.getHeight() || x2 < 0 || x2 >= img.getWidth()) {
+                    //invalid loc
+                } else {
+                    c = new Color(img.getRGB(x2, y2), true);
+                    red += c.getRed();
+                    blue += c.getBlue();
+                    green += c.getGreen();
+
+                    count++;
+                }
+            }
         }
-        return total / 8;
+        Color colorToReturn = new Color(red / count, green / count, blue / count, c.getAlpha());
+        return colorToReturn.getRGB();
     }
 
     /**
