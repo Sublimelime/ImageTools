@@ -17,6 +17,7 @@ public class TestingWindow extends JFrame {
 
         original = ImageTools.load("circle.png");
         images[0][0] = original;
+
         images[0][1] = ImageTools.copy(original);
         images[0][2] = ImageTools.scale(original, .25, .25);
         images[0][3] = ImageTools.scale(original, 10, 10);

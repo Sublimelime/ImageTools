@@ -249,11 +249,36 @@ public class ImageTools {
      * received image is null or if non-positive percentage is provided.
      */
     public static BufferedImage removePixels(BufferedImage img, double percentToRemove) {
-        if (img == null) {
+        if (img == null || percentToRemove < 0) {
             return null;
+        } else if (percentToRemove > 1) {
+            percentToRemove = 1;
+        }
+        BufferedImage temp = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        long quantityOfPixelsTotal = img.getWidth() * img.getHeight();
+        int quantityOfPixelsNotInvisible = 0;
+        for (int y = 0; y < img.getHeight(); y++) {
+            for (int x = 0; x < img.getWidth(); x++) {
+                if (((img.getRGB(x, y) >> 24) & 0xFF) > 0) { //not invisible
+                    quantityOfPixelsNotInvisible++;
+                }
+            }
         }
 
-        return null;
+        int countRemoved = 0;
+        int x, y;
+        while (countRemoved != quantityOfPixelsNotInvisible) {
+            x = (int) (Math.random() * img.getWidth());
+            y = (int) (Math.random() * img.getHeight());
+            int rgb = img.getRGB(x, y);
+            int blue = rgb & 0xFF;
+            int green = (rgb >> 8) & 0xFF;
+            int red = (rgb >> 16) & 0xFF;
+            Color newColor = new Color(red, green, blue, 0);
+            temp.setRGB(x, y, newColor.getRGB());
+        }
+
+        return temp;
     }
 
     /**
