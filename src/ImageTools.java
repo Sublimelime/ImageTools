@@ -226,7 +226,16 @@ public class ImageTools {
         if (img == null) {
             return null;
         }
-        return null;
+        BufferedImage temp = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        int inverted;
+        for (int y = 0; y < img.getHeight(); y++) {
+            for (int x = 0; x < img.getWidth(); x++) {
+                int rgb = img.getRGB(x, y);
+                inverted = (0x00FFFFFF - (rgb | 0xFF000000)) | (rgb & 0xFF000000);
+                temp.setRGB(x, y, inverted);
+            }
+        }
+        return temp;
     }
 
     /**
