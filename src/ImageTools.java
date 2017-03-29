@@ -203,10 +203,10 @@ public class ImageTools {
                 if (y2 < 0 || y2 >= img.getHeight() || x2 < 0 || x2 >= img.getWidth()) {
                     //invalid loc
                 } else {
-                    int rgb = img.getRGB(x2, y2);
-                    blue += rgb & 0xFF;
-                    green += (rgb >> 8) & 0xFF;
-                    red += (rgb >> 16) & 0xFF;
+                    c = new Color(img.getRGB(x2, y2), true);
+                    red += c.getRed();
+                    blue += c.getBlue();
+                    green += c.getGreen();
 
                     count++;
                 }
