@@ -254,7 +254,7 @@ public class ImageTools {
         } else if (percentToRemove > 1) {
             percentToRemove = 1;
         }
-        BufferedImage temp = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        BufferedImage temp = copy(img);
         long quantityOfPixelsTotal = img.getWidth() * img.getHeight();
         int quantityOfPixelsNotInvisible = 0;
         for (int y = 0; y < img.getHeight(); y++) {
@@ -266,16 +266,21 @@ public class ImageTools {
         }
 
         int countRemoved = 0;
-        int x, y;
-        while (countRemoved != quantityOfPixelsNotInvisible) {
-            x = (int) (Math.random() * img.getWidth());
-            y = (int) (Math.random() * img.getHeight());
-            int rgb = img.getRGB(x, y);
-            int blue = rgb & 0xFF;
-            int green = (rgb >> 8) & 0xFF;
-            int red = (rgb >> 16) & 0xFF;
+        int x, y, red, blue, green, alpha, rgb;
+        while (countRemoved <= quantityOfPixelsNotInvisible * percentToRemove) {
+            do { //find a non-transparent pixel
+                x = (int) (Math.random() * img.getWidth());
+                y = (int) (Math.random() * img.getHeight());
+                rgb = img.getRGB(x, y);
+                alpha = (rgb >> 24 & 0xFF);
+            } while (alpha == 0);
+            blue = rgb & 0xFF;
+            green = (rgb >> 8) & 0xFF;
+            red = (rgb >> 16) & 0xFF;
+
             Color newColor = new Color(red, green, blue, 0);
             temp.setRGB(x, y, newColor.getRGB());
+            countRemoved++;
         }
 
         return temp;
@@ -294,10 +299,11 @@ public class ImageTools {
      * remove as many as it can.
      */
     public static BufferedImage removePixels(BufferedImage img, int numToRemove) {
-        if (img == null) {
+        if (img == null || numToRemove < 0) {
             return null;
         }
-        return null;
+        //figures out what percentage of the total pixels in the image is numToRemove, calls percent removePixels
+        return removePixels(img, (double) numToRemove / (img.getHeight() * img.getWidth()));
     }
 
     /**
