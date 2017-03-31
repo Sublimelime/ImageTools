@@ -356,7 +356,35 @@ public class ImageTools {
         if (img == null) {
             return null;
         }
-        return null;
+        int alpha, red, blue, green;
+        BufferedImage temp = copy(img);
+        //go through every pixel in the image
+        for (int y = 0; y < img.getHeight(); y++) {
+            for (int x = 0; x < img.getWidth(); x++) {
+                int rgb = img.getRGB(x, y);
+                alpha = (rgb >> 24 & 0xFF);
+                blue = rgb & 0xFF;
+                green = (rgb >> 8) & 0xFF;
+                red = (rgb >> 16) & 0xFF;
+
+                blue *= (1 + lightenFactor);
+                red *= (1 + lightenFactor);
+                green *= (1 + lightenFactor);
+                if (blue > 255) {
+                    blue = 255;
+                }
+                if (green > 255) {
+                    green = 255;
+                }
+                if (red > 255) {
+                    red = 255;
+                }
+                temp.setRGB(x, y, ((alpha & 0xFF) << 24) | ((red & 0xFF) << 16)
+                        | ((green & 0xFF) << 8) | (blue & 0xFF));
+            }
+        }
+
+        return temp;
     }
 
     /**
@@ -374,6 +402,34 @@ public class ImageTools {
         if (img == null) {
             return null;
         }
-        return null;
+        int alpha, red, blue, green, rgb;
+        BufferedImage temp = copy(img);
+        //go through every pixel in the image
+        for (int y = 0; y < img.getHeight(); y++) {
+            for (int x = 0; x < img.getWidth(); x++) {
+                rgb = img.getRGB(x, y);
+                alpha = (rgb >> 24 & 0xFF);
+                blue = rgb & 0xFF;
+                green = (rgb >> 8) & 0xFF;
+                red = (rgb >> 16) & 0xFF;
+
+                blue *= (1 - darkenFactor);
+                red *= (1 - darkenFactor);
+                green *= (1 - darkenFactor);
+                if (blue < 0) {
+                    blue = 0;
+                }
+                if (green < 0) {
+                    green = 0;
+                }
+                if (red < 0) {
+                    red = 0;
+                }
+                temp.setRGB(x, y, ((alpha & 0xFF) << 24) | ((red & 0xFF) << 16)
+                        | ((green & 0xFF) << 8) | (blue & 0xFF));
+            }
+        }
+
+        return temp;
     }
 }
