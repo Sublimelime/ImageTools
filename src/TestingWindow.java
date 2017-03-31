@@ -29,10 +29,10 @@ public class TestingWindow extends JFrame {
         images[2][1] = ImageTools.flip(original, ImageTools.VERTICAL_FLIP);
         images[2][2] = ImageTools.flip(original, ImageTools.DOUBLE_FLIP);
         images[2][3] = ImageTools.blur(original);
-        //images[3][0]	= ImageTools.fade(original,.30);
-        //images[3][1]	= ImageTools.lighten(original,.3);
-        //images[3][2]	= ImageTools.darken(original,.4);
-        images[3][3] = ImageTools.invertColor(original);;
+        images[3][0] = ImageTools.fade(original, .30);
+        images[3][1] = ImageTools.lighten(original, .3);
+        images[3][2] = ImageTools.darken(original, .4);
+        images[3][3] = ImageTools.invertColor(original);
         setSize(500, 500);
         setUndecorated(false);
         setResizable(false);
