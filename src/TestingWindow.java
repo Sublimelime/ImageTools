@@ -49,7 +49,7 @@ public class TestingWindow extends JFrame {
         for (int r = 0; r < images.length; r++) {
             for (int c = 0; c < images[0].length; c++) {
                 if (images[r][c] != null) {
-                    g.drawImage(images[r][c], (c * 100), (r * 100), null);
+                    g.drawImage(images[r][c], (c * 100), (r * 100) + 40, null);
                 }
             }
         }
